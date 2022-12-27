@@ -2,9 +2,11 @@
  * This is the API-handler of your app that contains all your API routes.
  * On a bigger app, you will probably want to split this file up into multiple files.
  */
+import { ProcedureRecord, TRPCError } from "@trpc/server";
 import * as trpcNext from "@trpc/server/adapters/next";
 import { z } from "zod";
 import { formProc, publicProcedure, router } from "~/server/trpc";
+import zodToJsonSchema from "zod-to-json-schema";
 
 const postsDb = [
   {
@@ -39,8 +41,26 @@ const appRouter = router({
       }),
     )
     .query(({ input }) => {
-      const procedures = appRouter._def.procedures as any;
-      return procedures;
+      const procedures = appRouter._def
+        .procedures as unknown as ProcedureRecord;
+      const proc = procedures[input.path];
+      if (!proc?._def.meta) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+        });
+      }
+
+      const inputs: unknown[] = [...proc._def.inputs];
+
+      // merge all schemas into one
+      // if no schema, use undefined(?)
+      const firstSchema = inputs.shift() ?? z.undefined().optional();
+      const combinedSchema = inputs.reduce(
+        (acc, cur) => (acc as z.AnyZodObject).merge(cur as z.AnyZodObject),
+        firstSchema,
+      );
+
+      return zodToJsonSchema(combinedSchema as z.AnyZodObject);
     }),
 });
 

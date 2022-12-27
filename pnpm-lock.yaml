@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@hookform/resolvers': ^2.9.10
   '@tanstack/react-query': ^4.3.8
   '@trpc/client': ^10.7.0
   '@trpc/next': ^10.7.0
@@ -9,24 +10,29 @@ specifiers:
   '@types/node': ^18.7.20
   '@types/react': ^18.0.9
   '@types/react-dom': ^18.0.5
+  json-schema-to-zod: ^0.6.0
   next: ^13.0.0
   react: ^18.2.0
   react-dom: ^18.2.0
   react-hook-form: ^7.41.1
   typescript: ^4.8.3
   zod: ^3.20.2
+  zod-to-json-schema: ^3.20.1
 
 dependencies:
+  '@hookform/resolvers': 2.9.10_react-hook-form@7.41.1
   '@tanstack/react-query': 4.20.4_biqbaboplfbrettd7655fr4n2y
   '@trpc/client': 10.7.0_@trpc+server@10.7.0
   '@trpc/next': 10.7.0_gmaturtqmtlrknaw65ek5pmv2i
   '@trpc/react-query': 10.7.0_x4ie6nhblo2vtx2aafrgzlfqy4
   '@trpc/server': 10.7.0
+  json-schema-to-zod: 0.6.0
   next: 13.1.1_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.41.1_react@18.2.0
   zod: 3.20.2
+  zod-to-json-schema: 3.20.1_zod@3.20.2
 
 devDependencies:
   '@types/node': 18.11.18
@@ -35,6 +41,27 @@ devDependencies:
   typescript: 4.9.4
 
 packages:
+
+  /@apidevtools/json-schema-ref-parser/9.0.9:
+    resolution: {integrity: sha512-GBD2Le9w2+lVFoc4vswGI/TjkNIZSVp7+9xPf+X3uidBfWnAeUWmquteSyt0+VCrhNMWj/FTABISQrD3Z/YA+w==}
+    dependencies:
+      '@jsdevtools/ono': 7.1.3
+      '@types/json-schema': 7.0.11
+      call-me-maybe: 1.0.2
+      js-yaml: 4.1.0
+    dev: false
+
+  /@hookform/resolvers/2.9.10_react-hook-form@7.41.1:
+    resolution: {integrity: sha512-JIL1DgJIlH9yuxcNGtyhsWX/PgNltz+5Gr6+8SX9fhXc/hPbEIk6wPI82nhgvp3uUb6ZfAM5mqg/x7KR7NAb+A==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.41.1_react@18.2.0
+    dev: false
+
+  /@jsdevtools/ono/7.1.3:
+    resolution: {integrity: sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==}
+    dev: false
 
   /@next/env/13.1.1:
     resolution: {integrity: sha512-vFMyXtPjSAiOXOywMojxfKIqE3VWN5RCAx+tT3AS3pcKjMLFTCJFUWsKv8hC+87Z1F4W3r68qTwDFZIFmd5Xkw==}
@@ -234,6 +261,10 @@ packages:
     resolution: {integrity: sha512-kFhlqhzZt5PwVRRDci8oJKMMFGjjq9189stT6bvS9xuuLjRzzwhMShRi99sm/jqhdjWmlXyO3Ncx0rnghUvH+w==}
     dev: false
 
+  /@types/json-schema/7.0.11:
+    resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
+    dev: false
+
   /@types/node/18.11.18:
     resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
     dev: true
@@ -260,6 +291,14 @@ packages:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
     dev: true
 
+  /argparse/2.0.1:
+    resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
+    dev: false
+
+  /call-me-maybe/1.0.2:
+    resolution: {integrity: sha512-HpX65o1Hnr9HH25ojC1YGs7HCQLq0GCOibSaWER0eNpgJ/Z1MZv2mTc7+xh6WOPxbRVcmgbv4hGU+uSQ/2xFZQ==}
+    dev: false
+
   /caniuse-lite/1.0.30001441:
     resolution: {integrity: sha512-OyxRR4Vof59I3yGWXws6i908EtGbMzVUi3ganaZQHmydk1iwDhRnvaPG2WaR0KcqrDFKrxVZHULT396LEPhXfg==}
     dev: false
@@ -274,6 +313,30 @@ packages:
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
+    dev: false
+
+  /js-yaml/4.1.0:
+    resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
+    hasBin: true
+    dependencies:
+      argparse: 2.0.1
+    dev: false
+
+  /json-schema-ref-parser/9.0.9:
+    resolution: {integrity: sha512-qcP2lmGy+JUoQJ4DOQeLaZDqH9qSkeGCK3suKWxJXS82dg728Mn3j97azDMaOUmJAN4uCq91LdPx4K7E8F1a7Q==}
+    engines: {node: '>=10'}
+    deprecated: Please switch to @apidevtools/json-schema-ref-parser
+    dependencies:
+      '@apidevtools/json-schema-ref-parser': 9.0.9
+    dev: false
+
+  /json-schema-to-zod/0.6.0:
+    resolution: {integrity: sha512-Ers1rJVwcp7hSmqucG2oFTlkeEIk34ST9BuY+PuZ8u0cBdaWG0NgwU1A6w59n8WCsy8d4RM4CMWS6aZ2dQoi3w==}
+    hasBin: true
+    dependencies:
+      '@types/json-schema': 7.0.11
+      json-schema-ref-parser: 9.0.9
+      prettier: 2.8.1
     dev: false
 
   /loose-envify/1.4.0:
@@ -344,6 +407,12 @@ packages:
       nanoid: 3.3.4
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: false
+
+  /prettier/2.8.1:
+    resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: false
 
   /react-dom/18.2.0_react@18.2.0:
@@ -424,6 +493,14 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /zod-to-json-schema/3.20.1_zod@3.20.2:
+    resolution: {integrity: sha512-U+zmNJUKqzv92E+LdEYv0g2LxBLks4HAwfC6cue8jXby5PAeSEPGO4xV9Sl4zmLYyFvJkm0FOfOs6orUO+AI1w==}
+    peerDependencies:
+      zod: ^3.20.0
+    dependencies:
+      zod: 3.20.2
     dev: false
 
   /zod/3.20.2:
